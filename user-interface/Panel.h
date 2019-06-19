@@ -10,23 +10,19 @@
 
 #include <allegro5/allegro_primitives.h>
 
-#include "utilities/colour/Colour.h"
+#include "../utilities/colour/Colour.h"
+#include "Rect.h"
 
-class Panel {
-private:
-    float x{};
-    float y{};
-    float x2{};
-    float y2{};
-    float width{};
-    float height{};
+class Panel:  public Rect {
+protected:
     Colour* fill = nullptr;
     Colour* stroke = nullptr;
     float strokeWidth{1};
     std::vector<Panel*> children;
 public:
     Panel(float x, float y, float width, float height, Colour& fill);
-    Panel(float x, float y, float width, float height, Colour& fill, Colour& stroke) : Panel(x, y, width, height, fill) {
+    Panel(float x, float y, float width, float height, Colour& fill, Colour& stroke) : Panel(x, y, width, height, fill)
+    {
         this->stroke = &stroke;
     };
     Panel(float x, float y, float width, float height, Colour& fill, Colour& stroke, float strokeWidth) : Panel(x, y, width, height, fill, stroke) {
@@ -41,14 +37,6 @@ public:
     virtual void add(Panel* child);
 
     void drawChildren() const;
-
-    float getWidth() const;
-
-    void setWidth(float width);
-
-    float getHeight() const;
-
-    void setHeight(float height);
 
     Colour& getFill();
 

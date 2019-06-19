@@ -8,6 +8,7 @@ int main(int argc, char** argv)
     ALLEGRO_EVENT_QUEUE* event_queue = nullptr;
 
     auto* colours = new Colours();
+    auto* fonts = new Fonts();
     auto* menu = new Panel(120, 120, 400, 300, *colours->green, *colours->red, 21);
 
     menu->add(new Panel(10, 10, 50, 50, *colours->blue));
@@ -47,6 +48,8 @@ int main(int argc, char** argv)
         al_clear_to_color(al_map_rgb(0, 0, 0));
 
         menu->draw();
+        al_draw_text(fonts->droidSans->getFont(), al_map_rgb(255, 255, 255), 640/2, (480/4), ALLEGRO_ALIGN_CENTRE,
+                "Your Text Here!");
 
         al_flip_display();
     }
