@@ -1,3 +1,4 @@
+// Note: Checkout: Allegro GUI and MasKing
 
 #include "main.h"
 
