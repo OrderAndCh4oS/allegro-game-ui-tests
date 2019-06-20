@@ -31,3 +31,13 @@ ALLEGRO_FONT* Font::getFont(int size)
     this->checkFontHasLoaded(font);
     return font;
 }
+
+char* Font::getFileName() const
+{
+    return fileName;
+}
+
+char* Font::getStyle() const
+{
+    return style;
+}

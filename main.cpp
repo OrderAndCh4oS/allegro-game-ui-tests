@@ -1,27 +1,21 @@
 // Note: Checkout: Allegro GUI and MasKing
 
 #include "main.h"
-#include "utilities/font/Font.h"
-
-#include <allegro5/allegro_font.h>
-#include <allegro5/allegro_ttf.h>
 
 int main(int argc, char** argv)
 {
     ALLEGRO_DISPLAY* display = nullptr;
     ALLEGRO_EVENT_QUEUE* event_queue = nullptr;
 
-    auto* colours = new Colours();
-    auto* menu = new Panel(120, 120, 400, 300, *colours->green, *colours->red, 21);
+    auto* menu = new Panel(120, 120, 400, 300, *colour->green, *colour->red, 21);
 
-    menu->add(new Panel(10, 10, 50, 50, *colours->blue));
-    menu->add(new Panel(70, 10, 50, 50, *colours->blue));
+    menu->add(new Panel(10, 10, 50, 50, *colour->blue));
+    menu->add(new Panel(70, 10, 50, 50, *colour->blue));
 
     initAllegro();
     initResourceRoot();
 
-    Font* caslonBold = new Font((char*) "LibreCaslonText-Bold.ttf");
-    ALLEGRO_FONT* caslonBoldSixteen = caslonBold->getFont();
+    ALLEGRO_FONT* caslonItalic = font->caslon->getFont("italic", 250);
 
     auto* resolution = new Resolution(false);
     resolution->configure();
@@ -55,7 +49,7 @@ int main(int argc, char** argv)
         al_clear_to_color(al_map_rgb(0, 0, 0));
 
         menu->draw();
-        al_draw_text(caslonBoldSixteen, al_map_rgb(255, 255, 255), 640/2, (480/4), ALLEGRO_ALIGN_CENTRE, "Your Text Here!");
+        al_draw_text(caslonItalic, al_map_rgb(255, 255, 255), (float)1920/2, (float)1080/2, ALLEGRO_ALIGN_CENTRE, "Your Text Here!");
 
         al_flip_display();
     }

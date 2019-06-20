@@ -5,10 +5,16 @@
 #include <iostream>
 
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
+
+#include "constants/colour.h"
+#include "constants/font.h"
+
 #include "settings/Resolution.h"
-#include "structs/Colours.h"
 #include "user-interface/Panel.h"
 
+// Todo: move these declarations and functions elsewhere
 ALLEGRO_PATH* initResourceRoot();
 
 void initAllegro();
