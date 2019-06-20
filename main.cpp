@@ -7,15 +7,16 @@ int main(int argc, char** argv)
     ALLEGRO_DISPLAY* display = nullptr;
     ALLEGRO_EVENT_QUEUE* event_queue = nullptr;
 
+    initAllegro();
+    initResourceRoot();
+    Init::constants();
+
     auto* menu = new Panel(120, 120, 400, 300, *colour->green, *colour->red, 21);
 
     menu->add(new Panel(10, 10, 50, 50, *colour->blue));
     menu->add(new Panel(70, 10, 50, 50, *colour->blue));
 
-    initAllegro();
-    initResourceRoot();
-
-    ALLEGRO_FONT* caslonItalic = font->caslon->getFont("italic", 250);
+    ALLEGRO_FONT* caslonItalic = caslon->getFont("italic", 250);
 
     auto* resolution = new Resolution(false);
     resolution->configure();

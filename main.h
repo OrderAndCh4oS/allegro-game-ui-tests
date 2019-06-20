@@ -8,6 +8,7 @@
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 
+#include "constants/Init.h"
 #include "constants/colour.h"
 #include "constants/font.h"
 

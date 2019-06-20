@@ -13,7 +13,7 @@ void Font::checkFontHasLoaded(ALLEGRO_FONT* font)
 {
     if (!font) {
         al_destroy_font(font);
-        throw std::invalid_argument("Failed to load font");
+        throw std::invalid_argument("Failed to load caslon");
     }
 }
 

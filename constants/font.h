@@ -5,8 +5,8 @@
 #ifndef GAME_UI_CONST_FONT_H
 #define GAME_UI_CONST_FONT_H
 
-#include "../helpers/Fonts.h"
+#include "../utilities/font/FontFamily.h"
 
-Fonts* font = new Fonts();
+extern FontFamily* caslon;
 
 #endif //GAME_UI_FONT_H

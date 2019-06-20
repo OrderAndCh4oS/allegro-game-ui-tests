@@ -5,8 +5,8 @@
 #ifndef GAME_UI_CONST_COLOUR_H
 #define GAME_UI_CONST_COLOUR_H
 
-#include "../helpers/Colours.h"
+#include "../utilities/colour/ColourGroup.h"
 
-Colours* colour = new Colours();
+extern ColourGroup* colour;
 
 #endif //GAME_UI_COLOUR_H

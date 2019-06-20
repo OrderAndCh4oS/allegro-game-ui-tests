@@ -19,18 +19,18 @@ set(
         user-interface/Panel.h
         utilities/colour/Colour.cpp
         utilities/colour/Colour.h
-        helpers/Colours.h
+        utilities/colour/ColourGroup.h
         user-interface/Rect.cpp
         user-interface/Rect.h
         utilities/font/Font.cpp
         utilities/font/Font.h
         utilities/font/FontFamily.cpp
         utilities/font/FontFamily.h
-        helpers/Fonts.cpp
-        helpers/Fonts.h
+        utilities/font/Caslon.cpp
+        utilities/font/Caslon.h
         constants/font.h
         constants/colour.h
-)
+        constants/font.cpp constants/colour.cpp constants/Init.cpp constants/Init.h)
 
 add_executable(game_ui ${game_SRCS})
 

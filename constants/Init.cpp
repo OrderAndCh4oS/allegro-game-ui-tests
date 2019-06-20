@@ -1,11 +1,20 @@
 //
-// Created by sarcoma on 6/20/19.
+// Created by sarcoma on 6/21/19.
 //
 
-#include "Fonts.h"
+#include "Init.h"
 
-Fonts::Fonts()
+void Init::constants()
 {
+    initColour();
+    initCaslon();
+}
+
+void Init::initColour() { colour = new ColourGroup(); }
+
+void Init::initCaslon()
+{
+    caslon = new FontFamily();
     Font* caslonRegular = new Font((char*) "LibreCaslonText-Regular.ttf");
     Font* caslonItalic = new Font((char*) "LibreCaslonText-Italic.ttf", (char*) "italic");
     Font* caslonBold = new Font((char*) "LibreCaslonText-Bold.ttf", (char*) "bold");
