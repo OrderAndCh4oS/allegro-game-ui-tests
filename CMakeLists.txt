@@ -26,8 +26,6 @@ set(
         utilities/font/Font.h
         utilities/font/FontFamily.cpp
         utilities/font/FontFamily.h
-        utilities/font/Caslon.cpp
-        utilities/font/Caslon.h
         constants/font.h
         constants/colour.h
         constants/font.cpp constants/colour.cpp constants/Init.cpp constants/Init.h)
