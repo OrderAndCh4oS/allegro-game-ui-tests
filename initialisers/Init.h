@@ -5,15 +5,14 @@
 #ifndef GAME_UI_INIT_H
 #define GAME_UI_INIT_H
 
-#include "colour.h"
-#include "font.h"
+#include "../constants/colour.h"
+#include "../constants/font.h"
 
 class Init {
-protected:
-    static void initCaslon();
-    static void initColour();
 public:
-    static void constants();
+    static void caslon();
+
+    static void colour();
 };
 
 #endif //GAME_UI_INIT_H

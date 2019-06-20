@@ -1,4 +1,4 @@
 
 #include "colour.h"
 
-ColourGroup* colour;
+ColourGroup* gColour;

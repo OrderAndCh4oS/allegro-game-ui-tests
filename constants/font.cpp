@@ -1,4 +1,4 @@
 
 #include "font.h"
 
-FontFamily* caslon;
+FontFamily* gCaslon;

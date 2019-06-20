@@ -9,14 +9,15 @@ int main(int argc, char** argv)
 
     initAllegro();
     initResourceRoot();
-    Init::constants();
+    Init::colour();
+    Init::caslon();
 
-    auto* menu = new Panel(120, 120, 400, 300, *colour->green, *colour->red, 21);
+    auto* menu = new Panel(120, 120, 400, 300, *gColour->green, *gColour->red, 21);
 
-    menu->add(new Panel(10, 10, 50, 50, *colour->blue));
-    menu->add(new Panel(70, 10, 50, 50, *colour->blue));
+    menu->add(new Panel(10, 10, 50, 50, *gColour->blue));
+    menu->add(new Panel(70, 10, 50, 50, *gColour->blue));
 
-    ALLEGRO_FONT* caslonItalic = caslon->getFont("italic", 250);
+    ALLEGRO_FONT* caslonItalic = gCaslon->getFont("italic", 250);
 
     auto* resolution = new Resolution(false);
     resolution->configure();

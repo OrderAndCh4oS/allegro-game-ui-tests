@@ -7,6 +7,6 @@
 
 #include "../utilities/colour/ColourGroup.h"
 
-extern ColourGroup* colour;
+extern ColourGroup* gColour;
 
 #endif //GAME_UI_COLOUR_H

@@ -7,6 +7,6 @@
 
 #include "../utilities/font/FontFamily.h"
 
-extern FontFamily* caslon;
+extern FontFamily* gCaslon;
 
 #endif //GAME_UI_FONT_H
