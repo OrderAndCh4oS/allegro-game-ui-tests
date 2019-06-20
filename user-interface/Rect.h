@@ -1,6 +1,4 @@
-//
-// Created by sarcoma on 6/19/19.
-//
+
 
 #ifndef GAME_UI_RECT_H
 #define GAME_UI_RECT_H

@@ -20,14 +20,9 @@ set(
         utilities/colour/Colour.cpp
         utilities/colour/Colour.h
         structs/Colours.h
-        user-interface/TextPanel.cpp
-        user-interface/TextPanel.h
         user-interface/Rect.cpp
         user-interface/Rect.h
-        utilities/text/Font.cpp
-        utilities/text/Font.h
-        structs/Fonts.h
-)
+        utilities/font/Font.cpp utilities/font/Font.h utilities/font/FontFamily.cpp utilities/font/FontFamily.h)
 
 add_executable(game_ui ${game_SRCS})
 
@@ -44,4 +39,7 @@ set(
 
 target_link_libraries(game_ui ${game_LIBS})
 
+if (NOT ${PROJECT_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_BINARY_DIR})
+    file(COPY "${PROJECT_SOURCE_DIR}/resources" DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+endif()
 

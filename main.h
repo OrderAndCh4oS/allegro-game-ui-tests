@@ -7,7 +7,10 @@
 #include <allegro5/allegro.h>
 #include "settings/Resolution.h"
 #include "structs/Colours.h"
-#include "structs/Fonts.h"
 #include "user-interface/Panel.h"
+
+ALLEGRO_PATH* initResourceRoot();
+
+void initAllegro();
 
 #endif //GAME_UI_MAIN_H

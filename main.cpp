@@ -1,6 +1,10 @@
 // Note: Checkout: Allegro GUI and MasKing
 
 #include "main.h"
+#include "utilities/font/Font.h"
+
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
 
 int main(int argc, char** argv)
 {
@@ -8,13 +12,16 @@ int main(int argc, char** argv)
     ALLEGRO_EVENT_QUEUE* event_queue = nullptr;
 
     auto* colours = new Colours();
-    auto* fonts = new Fonts();
     auto* menu = new Panel(120, 120, 400, 300, *colours->green, *colours->red, 21);
 
     menu->add(new Panel(10, 10, 50, 50, *colours->blue));
     menu->add(new Panel(70, 10, 50, 50, *colours->blue));
 
-    al_init(); // NOLINT(hicpp-signed-bitwise)
+    initAllegro();
+    initResourceRoot();
+
+    Font* caslonBold = new Font((char*) "LibreCaslonText-Bold.ttf");
+    ALLEGRO_FONT* caslonBoldSixteen = caslonBold->getFont();
 
     auto* resolution = new Resolution(false);
     resolution->configure();
@@ -48,8 +55,7 @@ int main(int argc, char** argv)
         al_clear_to_color(al_map_rgb(0, 0, 0));
 
         menu->draw();
-        al_draw_text(fonts->droidSans->getFont(), al_map_rgb(255, 255, 255), 640/2, (480/4), ALLEGRO_ALIGN_CENTRE,
-                "Your Text Here!");
+        al_draw_text(caslonBoldSixteen, al_map_rgb(255, 255, 255), 640/2, (480/4), ALLEGRO_ALIGN_CENTRE, "Your Text Here!");
 
         al_flip_display();
     }
@@ -59,4 +65,19 @@ int main(int argc, char** argv)
     al_destroy_display(display);
 
     return 0;
+}
+
+void initAllegro()
+{
+    al_init(); // NOLINT(hicpp-signed-bitwise)
+    al_init_font_addon();
+    al_init_ttf_addon();
+}
+
+ALLEGRO_PATH* initResourceRoot()
+{
+    ALLEGRO_PATH* path = al_get_standard_path(ALLEGRO_RESOURCES_PATH);
+    al_append_path_component(path, "resources");
+    al_change_directory(al_path_cstr(path, '/'));
+    al_destroy_path(path);
 }

@@ -1,6 +1,4 @@
-//
-// Created by sarcoma on 6/19/19.
-//
+
 
 #ifndef GAME_UI_COLOUR_H
 #define GAME_UI_COLOUR_H
@@ -17,15 +15,12 @@ private:
 public:
     Colour();
     Colour(unsigned char r, unsigned char g, unsigned char b);
-
     Colour(float r, float g, float b);
-
     Colour(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
             :Colour(r, g, b)
     {
         this->a = (float) a/255;
     };
-
     Colour(float r, float g, float b, float a)
             :Colour(r, g, b)
     {
