@@ -13,8 +13,9 @@ public:
 
     void addFont(Font* font);
 
-    ALLEGRO_FONT* getFont(const char* style);
-    ALLEGRO_FONT* getFont(const char* style, int size);
+    ALLEGRO_FONT* getAllegroFont(const char* style);
+
+    ALLEGRO_FONT* getAllegroFont(const char* style, int size);
 
     Font* findFontByStyle(const char* style) const;
 };

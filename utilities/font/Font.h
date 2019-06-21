@@ -32,6 +32,8 @@ public:
     char* getFileName() const;
 
     char* getStyle() const;
+
+    void draw();
 };
 
 #endif //GAME_UI_FONT_H

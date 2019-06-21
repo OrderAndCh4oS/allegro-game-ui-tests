@@ -1,6 +1,7 @@
 // Note: Checkout: Allegro GUI and MasKing
 
 #include "main.h"
+#include "utilities/font/Text.h"
 
 int main(int argc, char** argv)
 {
@@ -17,9 +18,10 @@ int main(int argc, char** argv)
     menu->add(new Panel(10, 10, 50, 50, *gColour->blue));
     menu->add(new Panel(70, 10, 50, 50, *gColour->blue));
 
-    ALLEGRO_FONT* caslonItalic = gCaslon->getFont("italic", 250);
-
+    auto* text = new Text(1920/2, 1080/4, gCaslon->findFontByStyle("italic"), gColour->red->get(), 150,
+            ALLEGRO_ALIGN_CENTRE);
     auto* resolution = new Resolution(false);
+
     resolution->configure();
 
     display = al_create_display(resolution->getWidth(), resolution->getHeight());
@@ -51,12 +53,14 @@ int main(int argc, char** argv)
         al_clear_to_color(al_map_rgb(0, 0, 0));
 
         menu->draw();
-        al_draw_text(caslonItalic, al_map_rgb(255, 255, 255), (float)1920/2, (float)1080/2, ALLEGRO_ALIGN_CENTRE, "Your Text Here!");
+        text->write((char*) "Hello", 400);
 
         al_flip_display();
     }
 
     delete menu;
+    delete text;
+    delete resolution;
     al_destroy_event_queue(event_queue);
     al_destroy_display(display);
 

@@ -28,7 +28,7 @@ set(
         utilities/font/FontFamily.h
         constants/font.h
         constants/colour.h
-        constants/font.cpp constants/colour.cpp initialisers/Init.cpp initialisers/Init.h)
+        constants/font.cpp constants/colour.cpp initialisers/Init.cpp initialisers/Init.h utilities/font/Text.cpp utilities/font/Text.h utilities/geometry/Point.cpp utilities/geometry/Point.h)
 
 add_executable(game_ui ${game_SRCS})
 
