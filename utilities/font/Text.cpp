@@ -1,7 +1,7 @@
 
 #include "Text.h"
 
-Text::Text(float x, float y, Font* font, ALLEGRO_COLOR colour)
+Text::Text(float x, float y, ALLEGRO_FONT* font, ALLEGRO_COLOR colour)
 {
     Text::x = x;
     Text::y = y;
@@ -12,10 +12,10 @@ Text::Text(float x, float y, Font* font, ALLEGRO_COLOR colour)
 void Text::write(char* text)
 {
     if (this->maxWidth==0) {
-        al_draw_text(font->getFont(size), colour, x, y, alignment, text);
+        al_draw_text(font, colour, x, y, alignment, text);
     }
     else {
-        al_draw_multiline_text(font->getFont(size), colour, x, y, maxWidth, lineHeight, alignment, text);
+        al_draw_multiline_text(font, colour, x, y, maxWidth, lineHeight, alignment, text);
     }
 }
 
@@ -32,40 +32,10 @@ void Text::write(char* text, float x, float y)
     this->write(text);
 }
 
-void Text::write(char* text, int size)
-{
-    Text::size = size;
-    this->write(text);
-}
-
 void Text::write(char* text, float x, float y, ALLEGRO_COLOR colour)
 {
     Text::x = x;
     Text::y = y;
-    Text::colour = colour;
-    this->write(text);
-}
-
-void Text::write(char* text, float x, float y, int size)
-{
-    Text::x = x;
-    Text::y = y;
-    Text::size = size;
-    this->write(text);
-}
-
-void Text::write(char* text, int size, ALLEGRO_COLOR colour)
-{
-    Text::size = size;
-    Text::colour = colour;
-    this->write(text);
-}
-
-void Text::write(char* text, float x, float y, int size, ALLEGRO_COLOR colour)
-{
-    Text::x = x;
-    Text::y = y;
-    Text::size = size;
     Text::colour = colour;
     this->write(text);
 }
@@ -90,12 +60,12 @@ void Text::setY(float y)
     Text::y = y;
 }
 
-Font* Text::getFont() const
+ALLEGRO_FONT* Text::getFont() const
 {
     return font;
 }
 
-void Text::setFont(Font* font)
+void Text::setFont(ALLEGRO_FONT* font)
 {
     Text::font = font;
 }
@@ -148,9 +118,4 @@ int Text::getMaxWidth() const
 void Text::setMaxWidth(int maxWidth)
 {
     Text::maxWidth = maxWidth;
-}
-
-Text::~Text()
-{
-    delete font;
 }

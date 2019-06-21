@@ -11,7 +11,7 @@ void FontFamily::addFont(Font* font)
     fonts.push_back(font);
 }
 
-ALLEGRO_FONT* FontFamily::getAllegroFont(const char* style)
+ALLEGRO_FONT* FontFamily::getFont(const char* style)
 {
     Font* foundFont = findFontByStyle(style);
     if(!foundFont)
@@ -20,7 +20,7 @@ ALLEGRO_FONT* FontFamily::getAllegroFont(const char* style)
     return foundFont->getFont();
 }
 
-ALLEGRO_FONT* FontFamily::getAllegroFont(const char* style, int size)
+ALLEGRO_FONT* FontFamily::getFont(const char* style, int size)
 {
     Font* foundFont = findFontByStyle(style);
     if (!foundFont)

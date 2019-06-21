@@ -13,44 +13,28 @@ class Text {
 private:
     float x{0};
     float y{0};
-    Font* font;
+    ALLEGRO_FONT* font;
     ALLEGRO_COLOR colour;
     int size{16};
     int alignment{ALLEGRO_ALIGN_LEFT};
     int lineHeight{19};
     int maxWidth{0};
 public:
-    Text(float x, float y, Font* font, ALLEGRO_COLOR colour);
+    Text(float x, float y, ALLEGRO_FONT* font, ALLEGRO_COLOR colour);
 
-    Text(float x, float y, Font* font, ALLEGRO_COLOR colour, int size)
+    Text(float x, float y, ALLEGRO_FONT* font, ALLEGRO_COLOR colour, int alignment)
             :Text(x, y, font, colour)
-    {
-        Text::size = size;
-    };
-
-    Text(float x, float y, Font* font, ALLEGRO_COLOR colour, int size, int alignment)
-            :Text(x, y, font, colour, size)
     {
         Text::alignment = alignment;
     };
 
-    ~Text();
-
     void write(char* text);
-
-    void write(char* text, int size);
 
     void write(char* text, float x, float y);
 
     void write(char* text, ALLEGRO_COLOR colour);
 
     void write(char* text, float x, float y, ALLEGRO_COLOR colour);
-
-    void write(char* text, float x, float y, int size);
-
-    void write(char* text, int size, ALLEGRO_COLOR colour);
-
-    void write(char* text, float x, float y, int size, ALLEGRO_COLOR colour);
 
     float getX() const;
 
@@ -60,9 +44,9 @@ public:
 
     void setY(float y);
 
-    Font* getFont() const;
+    ALLEGRO_FONT* getFont() const;
 
-    void setFont(Font* font);
+    void setFont(ALLEGRO_FONT* font);
 
     const ALLEGRO_COLOR& getColour() const;
 

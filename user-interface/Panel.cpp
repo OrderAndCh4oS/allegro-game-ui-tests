@@ -34,6 +34,8 @@ void Panel::draw(float xOffset, float yOffset)
     }
     al_draw_filled_rectangle(rect->getX(), rect->getY(), rect->getX2(), rect->getY2(), this->fill->get());
     drawChildren();
+
+    delete rect;
 }
 
 Colour& Panel::getFill()

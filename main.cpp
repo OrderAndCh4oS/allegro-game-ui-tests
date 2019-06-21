@@ -18,8 +18,7 @@ int main(int argc, char** argv)
     menu->add(new Panel(10, 10, 50, 50, *gColour->blue));
     menu->add(new Panel(70, 10, 50, 50, *gColour->blue));
 
-    auto* text = new Text(1920/2, 1080/4, gCaslon->findFontByStyle("italic"), gColour->red->get(), 150,
-            ALLEGRO_ALIGN_CENTRE);
+    auto* text = new Text(1920/2, 1080/4, gCaslon->getFont("italic", 140), gColour->red->get(), ALLEGRO_ALIGN_CENTRE);
     auto* resolution = new Resolution(false);
 
     resolution->configure();
@@ -53,7 +52,7 @@ int main(int argc, char** argv)
         al_clear_to_color(al_map_rgb(0, 0, 0));
 
         menu->draw();
-        text->write((char*) "Hello", 400);
+        text->write((char*) "SUPER");
 
         al_flip_display();
     }
@@ -64,7 +63,7 @@ int main(int argc, char** argv)
     al_destroy_event_queue(event_queue);
     al_destroy_display(display);
 
-    return 0;
+    exit(0);
 }
 
 void initAllegro()
