@@ -17,11 +17,7 @@ private:
 public:
     explicit Font(char* fileName);
 
-    Font(char* fileName, char* style)
-            :Font(fileName)
-    {
-        Font::style = style;
-    };
+    Font(char* fileName, char* style);
 
     void checkFontHasLoaded(ALLEGRO_FONT* font);
 

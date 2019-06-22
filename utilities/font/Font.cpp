@@ -9,6 +9,12 @@ Font::Font(char* fileName)
     Font::fileName = fileName;
 }
 
+Font::Font(char* fileName, char* style)
+        :Font(fileName)
+{
+    Font::style = style;
+};
+
 void Font::checkFontHasLoaded(ALLEGRO_FONT* font)
 {
     if (!font) {

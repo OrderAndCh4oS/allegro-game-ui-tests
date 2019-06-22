@@ -14,16 +14,12 @@ private:
     bool fullScreen{false};
 public:
     Resolution();
-    Resolution(int width, int height) : Resolution() {
-        this->width = width;
-        this->height = height;
-    };
-    explicit Resolution(bool isFullScreen) : Resolution() {
-        this->fullScreen = isFullScreen;
-    };
-    Resolution(int width, int height, bool isFullScreen) : Resolution(width, height) {
-        this->fullScreen = isFullScreen;
-    };
+
+    explicit Resolution(bool isFullScreen);
+
+    Resolution(int width, int height);
+
+    Resolution(int width, int height, bool isFullScreen);
     void configure();
     int getWidth();
     int getHeight();

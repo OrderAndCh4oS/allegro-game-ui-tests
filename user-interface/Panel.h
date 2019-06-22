@@ -19,15 +19,11 @@ protected:
     std::vector<Panel*> children;
 public:
     Panel(float x, float y, float width, float height, Colour& fill);
-    Panel(float x, float y, float width, float height, Colour& fill, Colour& stroke) : Panel(x, y, width, height, fill)
-    {
-        this->stroke = &stroke;
-    };
-    Panel(float x, float y, float width, float height, Colour& fill, Colour& stroke, float strokeWidth) : Panel(x, y, width, height, fill, stroke) {
-        this->strokeWidth = strokeWidth;
-    };
 
-    ~Panel();
+    Panel(float x, float y, float width, float height, Colour& fill, Colour& stroke);
+
+    Panel(float x, float y, float width, float height, Colour& fill, Colour& stroke, float strokeWidth);
+
     virtual void draw();
 
     virtual void draw(float xOffset, float yOffset);

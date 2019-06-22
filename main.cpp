@@ -1,7 +1,8 @@
 // Note: Checkout: Allegro GUI and MasKing
 
 #include "main.h"
-#include "utilities/font/Text.h"
+#include "utilities/font/FontStyle.h"
+#include "user-interface/TextBox.h"
 
 int main(int argc, char** argv)
 {
@@ -18,10 +19,26 @@ int main(int argc, char** argv)
     menu->add(new Panel(10, 10, 50, 50, *gColour->blue));
     menu->add(new Panel(70, 10, 50, 50, *gColour->blue));
 
-    auto* text = new Text(1920/2, 1080/4, gCaslon->getFont("italic", 140), gColour->red->get(), ALLEGRO_ALIGN_CENTRE);
-    auto* resolution = new Resolution(false);
+    auto* text = new FontStyle(
+            (float) 1920/2,
+            (float) 1080/4,
+            gCaslon->getFont("italic", 140),
+            gColour->red->get(),
+            ALLEGRO_ALIGN_CENTRE
+    );
 
+    auto* textTwo = new FontStyle(
+            60, 15,
+            gCaslon->getFont("bold", 16),
+            gColour->blue->get(),
+            ALLEGRO_ALIGN_CENTRE
+    );
+
+    auto* resolution = new Resolution(false);
     resolution->configure();
+
+    auto* textBox = new TextBox(textTwo, 600, 300, 240, 80, *gColour->green);
+    textBox->setText("Text Box");
 
     display = al_create_display(resolution->getWidth(), resolution->getHeight());
 
@@ -53,6 +70,7 @@ int main(int argc, char** argv)
 
         menu->draw();
         text->write((char*) "SUPER");
+        textBox->draw();
 
         al_flip_display();
     }

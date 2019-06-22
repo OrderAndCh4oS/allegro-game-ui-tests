@@ -8,6 +8,18 @@ Panel::Panel(float x, float y, float width, float height, Colour& fill)
     this->fill = &fill;
 }
 
+Panel::Panel(float x, float y, float width, float height, Colour& fill, Colour& stroke)
+        :Panel(x, y, width, height, fill)
+{
+    this->stroke = &stroke;
+}
+
+Panel::Panel(float x, float y, float width, float height, Colour& fill, Colour& stroke, float strokeWidth)
+        :Panel(x, y, width, height, fill, stroke)
+{
+    this->strokeWidth = strokeWidth;
+}
+
 void Panel::drawChildren() const
 {
     for (Panel* child : children) {
@@ -30,7 +42,8 @@ void Panel::draw(float xOffset, float yOffset)
     Rect* rect = this->getCoordinates(xOffset, yOffset);
 
     if (this->stroke) {
-        al_draw_rectangle(rect->getX(), rect->getY(), rect->getX2(), rect->getY2(), this->stroke->get(), this->strokeWidth*2);
+        al_draw_rectangle(rect->getX(), rect->getY(), rect->getX2(), rect->getY2(), this->stroke->get(),
+                this->strokeWidth*2);
     }
     al_draw_filled_rectangle(rect->getX(), rect->getY(), rect->getX2(), rect->getY2(), this->fill->get());
     drawChildren();
@@ -66,9 +79,4 @@ float Panel::getStrokeWidth()
 void Panel::setStrokeWidth(float strokeWidth)
 {
     Panel::strokeWidth = strokeWidth;
-}
-
-Panel::~Panel()
-{
-
 }

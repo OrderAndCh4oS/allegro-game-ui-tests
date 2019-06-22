@@ -20,6 +20,21 @@ Colour::Colour(float r, float g, float b)
     this->b = b;
 }
 
+Colour::Colour(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
+        :Colour(r, g, b)
+{
+    this->a = (float) a/255;
+}
+
+Colour::Colour(float r, float g, float b, float a)
+        :Colour(r, g, b)
+{
+    if (a>1 || a<0) {
+        throw std::invalid_argument("Float value Colour must be in range 0 to 1");
+    }
+    this->a = a;
+}
+
 Colour* Colour::clone()
 {
     return new Colour(r, g, b);

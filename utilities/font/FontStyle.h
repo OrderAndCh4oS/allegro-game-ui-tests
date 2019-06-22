@@ -2,14 +2,14 @@
 // Created by sarcoma on 6/21/19.
 //
 
-#ifndef GAME_UI_TEXT_H
-#define GAME_UI_TEXT_H
+#ifndef GAME_UI_FONTSTYLE_H
+#define GAME_UI_FONTSTYLE_H
 
 #include <allegro5/allegro_font.h>
 #include <string>
 #include "Font.h"
 
-class Text {
+class FontStyle {
 private:
     float x{0};
     float y{0};
@@ -19,22 +19,23 @@ private:
     int alignment{ALLEGRO_ALIGN_LEFT};
     int lineHeight{19};
     int maxWidth{0};
+protected:
+
+    void draw(const char* text, float xOffset, float yOffset, ALLEGRO_COLOR colour);
+
 public:
-    Text(float x, float y, ALLEGRO_FONT* font, ALLEGRO_COLOR colour);
 
-    Text(float x, float y, ALLEGRO_FONT* font, ALLEGRO_COLOR colour, int alignment)
-            :Text(x, y, font, colour)
-    {
-        Text::alignment = alignment;
-    };
+    FontStyle(float x, float y, ALLEGRO_FONT* font, ALLEGRO_COLOR colour);
 
-    void write(char* text);
+    FontStyle(float x, float y, ALLEGRO_FONT* font, ALLEGRO_COLOR colour, int alignment);
 
-    void write(char* text, float x, float y);
+    void write(const char* text);
 
-    void write(char* text, ALLEGRO_COLOR colour);
+    void write(const char* text, float xOffset, float yOffset);
 
-    void write(char* text, float x, float y, ALLEGRO_COLOR colour);
+    void write(const char* text, ALLEGRO_COLOR colour);
+
+    void write(const char* text, float xOffset, float yOffset, ALLEGRO_COLOR colour);
 
     float getX() const;
 
@@ -67,6 +68,7 @@ public:
     int getMaxWidth() const;
 
     void setMaxWidth(int maxWidth);
+
 };
 
-#endif //GAME_UI_TEXT_H
+#endif //GAME_UI_FONTSTYLE_H

@@ -3,6 +3,25 @@
 
 Resolution::Resolution() = default;
 
+Resolution::Resolution(int width, int height)
+        :Resolution()
+{
+    this->width = width;
+    this->height = height;
+}
+
+Resolution::Resolution(bool isFullScreen)
+        :Resolution()
+{
+    this->fullScreen = isFullScreen;
+}
+
+Resolution::Resolution(int width, int height, bool isFullScreen)
+        :Resolution(width, height)
+{
+    this->fullScreen = isFullScreen;
+}
+
 int Resolution::getWidth()
 {
     return this->width;
@@ -33,7 +52,7 @@ void Resolution::configure()
 
 void Resolution::configureDimensions(int mode)
 {
-    if(this->width && this->height)
+    if (this->width && this->height)
         return;
     ALLEGRO_DISPLAY_MODE displayData;
     al_get_display_mode(mode, &displayData);
