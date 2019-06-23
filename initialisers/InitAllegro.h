@@ -21,6 +21,8 @@ public:
 
     static void keyboard();
 
+    static void mouse();
+
     static void fontAddon();
 
     static void ttfAddon();

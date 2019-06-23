@@ -5,7 +5,6 @@
 
 int main(int argc, char** argv)
 {
-
     InitAllegro::allegro();
     InitAllegro::fontAddon();
     InitAllegro::ttfAddon();
@@ -18,10 +17,12 @@ int main(int argc, char** argv)
     ALLEGRO_DISPLAY* display = InitAllegro::display(resolution->getWidth(), resolution->getHeight());
     ALLEGRO_EVENT_QUEUE* queue = InitAllegro::eventQueue();
     ALLEGRO_TIMER* timer = InitAllegro::timer(1.0/30.0);
-    bool redraw = true;
 
     InitConstants::colour();
     InitConstants::caslon();
+
+    bool redraw = true;
+    bool done = false;
 
     auto* menu = new Panel(120, 120, 400, 300, *gColour->green, *gColour->red, 21);
 
@@ -59,19 +60,27 @@ int main(int argc, char** argv)
 
         al_wait_for_event(queue, &event);
 
-        if (event.type==ALLEGRO_EVENT_TIMER)
-            redraw = true;
+        switch (event.type) {
+        case ALLEGRO_EVENT_TIMER:
+            // game logic goes here.
+            text->write((char*) "SUPER");
+            textBox->draw();
 
-        else if (event.type==ALLEGRO_EVENT_DISPLAY_CLOSE)
+            redraw = true;
+            break;
+
+        case ALLEGRO_EVENT_KEY_DOWN:
+        case ALLEGRO_EVENT_DISPLAY_CLOSE:
+            done = true;
+            break;
+        }
+
+        if (done)
             break;
 
         if (redraw && al_is_event_queue_empty(queue)) {
             al_clear_to_color(al_map_rgb(0, 0, 0));
-
             menu->draw();
-            text->write((char*) "SUPER");
-            textBox->draw();
-
             al_flip_display();
 
             redraw = false;

@@ -55,6 +55,13 @@ void InitAllegro::keyboard()
     }
 }
 
+void InitAllegro::mouse()
+{
+    if (!al_install_mouse()) {
+        throw InitError("Couldn't initialize keyboard");
+    }
+}
+
 void InitAllegro::fontAddon()
 {
     if (!al_init_font_addon()) {
