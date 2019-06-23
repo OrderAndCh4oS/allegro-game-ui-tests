@@ -2,14 +2,14 @@
 // Created by sarcoma on 6/21/19.
 //
 
-#include "Init.h"
+#include "InitConstants.h"
 
-void Init::caslon()
+void InitConstants::caslon()
 {
     gColour = new ColourGroup();
 }
 
-void Init::colour()
+void InitConstants::colour()
 {
     gCaslon = new FontFamily();
     Font* caslonRegular = new Font((char*) "LibreCaslonText-Regular.ttf");
