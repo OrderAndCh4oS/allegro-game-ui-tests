@@ -3,6 +3,8 @@
 #include "main.h"
 #include "initialisers/InitAllegro.h"
 
+// Note: Follow on here -- https://github.com/liballeg/allegro_wiki/wiki/Allegro-Vivace%3A-Graphics
+
 int main(int argc, char** argv)
 {
     InitAllegro::allegro();
