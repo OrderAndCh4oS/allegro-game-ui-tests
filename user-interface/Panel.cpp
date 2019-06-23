@@ -42,10 +42,16 @@ void Panel::draw(float xOffset, float yOffset)
     Rect* rect = this->getCoordinates(xOffset, yOffset);
 
     if (this->stroke) {
-        al_draw_rectangle(rect->getX(), rect->getY(), rect->getX2(), rect->getY2(), this->stroke->get(),
-                this->strokeWidth*2);
+        al_draw_rectangle(
+                rect->getX()-strokeWidth/2,
+                rect->getY()-strokeWidth/2,
+                rect->getX2()+strokeWidth/2,
+                rect->getY2()+strokeWidth/2,
+                this->stroke->get(alpha),
+                this->strokeWidth
+        );
     }
-    al_draw_filled_rectangle(rect->getX(), rect->getY(), rect->getX2(), rect->getY2(), this->fill->get());
+    al_draw_filled_rectangle(rect->getX(), rect->getY(), rect->getX2(), rect->getY2(), this->fill->get(alpha));
     drawChildren();
 
     delete rect;
@@ -79,4 +85,14 @@ float Panel::getStrokeWidth()
 void Panel::setStrokeWidth(float strokeWidth)
 {
     Panel::strokeWidth = strokeWidth;
+}
+
+float Panel::getAlpha() const
+{
+    return alpha;
+}
+
+void Panel::setAlpha(float alpha)
+{
+    Panel::alpha = alpha;
 }

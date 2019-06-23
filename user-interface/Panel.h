@@ -16,6 +16,7 @@ protected:
     Colour* fill = nullptr;
     Colour* stroke = nullptr;
     float strokeWidth{1};
+    float alpha{1};
     std::vector<Panel*> children;
 public:
     Panel(float x, float y, float width, float height, Colour& fill);
@@ -43,6 +44,10 @@ public:
     float getStrokeWidth();
 
     void setStrokeWidth(float strokeWidth);
+
+    float getAlpha() const;
+
+    void setAlpha(float alpha);
 };
 
 #endif //GAME_UI_PANEL_H

@@ -28,7 +28,7 @@ set(
         utilities/font/FontFamily.h
         constants/font.h
         constants/colour.h
-        constants/font.cpp constants/colour.cpp initialisers/InitConstants.cpp initialisers/InitConstants.h utilities/font/FontStyle.cpp utilities/font/FontStyle.h utilities/geometry/Point.cpp utilities/geometry/Point.h user-interface/Button.cpp user-interface/Button.h user-interface/TextBox.cpp user-interface/TextBox.h initialisers/InitAllegro.cpp initialisers/InitAllegro.h exceptions/InitError.cpp exceptions/InitError.h)
+        constants/font.cpp constants/colour.cpp initialisers/InitConstants.cpp initialisers/InitConstants.h utilities/font/FontStyle.cpp utilities/font/FontStyle.h utilities/geometry/Point.cpp utilities/geometry/Point.h user-interface/Button.cpp user-interface/Button.h user-interface/TextBox.cpp user-interface/TextBox.h initialisers/InitAllegro.cpp initialisers/InitAllegro.h exceptions/InitError.cpp exceptions/InitError.h utilities/image/ImageCollection.cpp utilities/image/ImageCollection.h utilities/image/Image.cpp utilities/image/Image.h)
 
 add_executable(game_ui ${game_SRCS})
 

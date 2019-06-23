@@ -16,15 +16,16 @@ public:
     Colour();
     Colour(unsigned char r, unsigned char g, unsigned char b);
     Colour(float r, float g, float b);
-
     Colour(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
-
     Colour(float r, float g, float b, float a);
 
-    ALLEGRO_COLOR get()
-    {
-        return al_map_rgba_f(r, g, b, a);
-    }
+    explicit Colour(int hex);
+
+    Colour(int hex, float a);
+
+    ALLEGRO_COLOR get();
+
+    ALLEGRO_COLOR get(float a);
 
     Colour* clone();
 };

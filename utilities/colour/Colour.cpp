@@ -8,6 +8,7 @@ Colour::Colour(unsigned char r, unsigned char g, unsigned char b)
     this->r = (float) r/255;
     this->g = (float) g/255;
     this->b = (float) b/255;
+    a = 255;
 }
 
 Colour::Colour(float r, float g, float b)
@@ -18,6 +19,7 @@ Colour::Colour(float r, float g, float b)
     this->r = r;
     this->g = g;
     this->b = b;
+    a = 255;
 }
 
 Colour::Colour(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
@@ -35,7 +37,40 @@ Colour::Colour(float r, float g, float b, float a)
     this->a = a;
 }
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "hicpp-signed-bitwise"
+
+/**
+ * Note: Found here: https://stackoverflow.com/a/3723973/2562137
+ * @param hex
+ */
+Colour::Colour(int hex)
+{
+    r = (hex >> 16 & 0xFF)/255.0;  // Extract the RR byte
+    g = (hex >> 8 & 0xFF)/255.0;   // Extract the GG byte
+    b = (hex & 0xFF)/255.0;        // Extract the BB byte
+    a = 255;
+}
+
+#pragma clang diagnostic pop
+
+Colour::Colour(int hex, float a)
+        :Colour(hex)
+{
+    this->a = a;
+}
+
+ALLEGRO_COLOR Colour::get()
+{
+    return al_map_rgba_f(r, g, b, a);
+}
+
+ALLEGRO_COLOR Colour::get(float a)
+{
+    return al_map_rgba_f(r, g, b, a);
+}
+
 Colour* Colour::clone()
 {
-    return new Colour(r, g, b);
+    return new Colour(r, g, b, a);
 }

@@ -2,6 +2,8 @@
 
 #include "main.h"
 #include "initialisers/InitAllegro.h"
+#include "utilities/image/Image.h"
+#include "utilities/image/ImageCollection.h"
 
 // Note: Follow on here -- https://github.com/liballeg/allegro_wiki/wiki/Allegro-Vivace%3A-Graphics
 
@@ -26,29 +28,35 @@ int main(int argc, char** argv)
     bool redraw = true;
     bool done = false;
 
-    auto* menu = new Panel(120, 120, 400, 300, *gColour->green, *gColour->red, 21);
+    auto* background = new Image("menu-background.jpg");
 
-    menu->add(new Panel(10, 10, 50, 50, *gColour->blue));
-    menu->add(new Panel(70, 10, 50, 50, *gColour->blue));
+    auto imageCollection = new ImageCollection();
+
+    imageCollection->add(background);
+
+    auto* menu = new Panel(120, 120, 400, 300, *gColour->murkyDarkGrey, *gColour->murkyBlack, 3);
+
+    menu->setAlpha(0.86);
+
+    menu->add(new Panel(10, 10, 50, 50, *gColour->murkyBlack));
+    menu->add(new Panel(70, 10, 50, 50, *gColour->murkyBlack));
 
     auto* text = new FontStyle(
-            (float) 1920/2,
-            (float) 1080/2,
-            gCaslon->getFont("italic", 140),
-            gColour->red->get(),
-            ALLEGRO_ALIGN_CENTRE
+            (float) 1920-100,
+            (float) 100,
+            gCaslon->getFont("regular", 140),
+            gColour->murkyWhite->get(),
+            ALLEGRO_ALIGN_RIGHT
     );
 
     auto* textTwo = new FontStyle(
             60, 15,
             gCaslon->getFont("bold", 16),
-            gColour->blue->get(),
+            gColour->murkyWhite->get(),
             ALLEGRO_ALIGN_CENTRE
     );
 
-
-
-    auto* textBox = new TextBox(textTwo, 600, 300, 240, 80, *gColour->green);
+    auto* textBox = new TextBox(textTwo, 600, 300, 240, 80, *gColour->murkyDarkGrey);
     textBox->setText("Text Box");
 
     al_register_event_source(queue, al_get_keyboard_event_source());
@@ -65,8 +73,6 @@ int main(int argc, char** argv)
         switch (event.type) {
         case ALLEGRO_EVENT_TIMER:
             // game logic goes here.
-            text->write((char*) "SUPER");
-            textBox->draw();
 
             redraw = true;
             break;
@@ -82,13 +88,17 @@ int main(int argc, char** argv)
 
         if (redraw && al_is_event_queue_empty(queue)) {
             al_clear_to_color(al_map_rgb(0, 0, 0));
+            background->draw(0, 0);
+            text->write((char*) "DEAD WORLD");
             menu->draw();
+            textBox->draw();
             al_flip_display();
 
             redraw = false;
         }
     }
 
+    delete imageCollection;
     delete menu;
     delete text;
     delete resolution;
