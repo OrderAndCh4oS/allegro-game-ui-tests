@@ -13,7 +13,11 @@
 #include "constants/font.h"
 
 #include "settings/Resolution.h"
+
+#include "utilities/font/FontStyle.h"
+
 #include "user-interface/Panel.h"
+#include "user-interface/TextBox.h"
 
 // Todo: move these declarations and functions elsewhere
 ALLEGRO_PATH* initResourceRoot();

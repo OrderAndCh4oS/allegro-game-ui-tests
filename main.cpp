@@ -1,8 +1,6 @@
 // Note: Checkout: Allegro GUI and MasKing
 
 #include "main.h"
-#include "utilities/font/FontStyle.h"
-#include "user-interface/TextBox.h"
 
 int main(int argc, char** argv)
 {
@@ -14,6 +12,10 @@ int main(int argc, char** argv)
     Init::colour();
     Init::caslon();
 
+    al_install_keyboard();
+
+    // Note: Set up event queue https://github.com/liballeg/allegro_wiki/wiki/Allegro-Vivace%3A-Basic-game-structure
+
     auto* menu = new Panel(120, 120, 400, 300, *gColour->green, *gColour->red, 21);
 
     menu->add(new Panel(10, 10, 50, 50, *gColour->blue));
@@ -21,7 +23,7 @@ int main(int argc, char** argv)
 
     auto* text = new FontStyle(
             (float) 1920/2,
-            (float) 1080/4,
+            (float) 1080/2,
             gCaslon->getFont("italic", 140),
             gColour->red->get(),
             ALLEGRO_ALIGN_CENTRE
