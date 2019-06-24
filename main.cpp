@@ -30,10 +30,10 @@ int main(int argc, char** argv)
 
     imageCollection->add(background);
 
-    auto* menu = new Panel(120, 120, 400, 300, *gColour->murkyDarkGrey->clone(0.86), *gColour->murkyBlack->clone(), 3);
+    auto* menu = new Panel(120, 120, 400, 300, *gColour->murkyDarkGrey->clone(0.86), *gColour->murkyBlack, 3);
 
-    menu->add(new Panel(10, 10, 50, 50, *gColour->murkyBlack->clone()));
-    menu->add(new Panel(70, 10, 50, 50, *gColour->murkyBlack->clone()));
+    menu->add(new Panel(10, 10, 50, 50, *gColour->murkyBlack));
+    menu->add(new Panel(70, 10, 50, 50, *gColour->murkyBlack));
 
     auto* text = new FontStyle(
             (float) 1920-100,
@@ -98,11 +98,12 @@ int main(int argc, char** argv)
     delete imageCollection;
     delete menu;
     delete text;
+    delete textTwo;
+    delete textBox;
     delete resolution;
     al_destroy_event_queue(queue);
     al_destroy_display(display);
     al_destroy_timer(timer);
-    al_destroy_event_queue(queue);
 
     return 0;
 }

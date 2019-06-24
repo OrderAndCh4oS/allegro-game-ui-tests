@@ -83,8 +83,3 @@ void Panel::setStrokeWidth(float strokeWidth)
 {
     Panel::strokeWidth = strokeWidth;
 }
-
-Panel::~Panel()
-{
-
-}
