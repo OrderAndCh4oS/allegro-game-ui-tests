@@ -1,9 +1,6 @@
 // Note: Checkout: Allegro GUI and MasKing
 
 #include "main.h"
-#include "initialisers/InitAllegro.h"
-#include "utilities/image/Image.h"
-#include "utilities/image/ImageCollection.h"
 
 // Note: Follow on here -- https://github.com/liballeg/allegro_wiki/wiki/Allegro-Vivace%3A-Graphics
 
@@ -23,7 +20,6 @@ int main(int argc, char** argv)
     ALLEGRO_TIMER* timer = InitAllegro::timer(1.0/30.0);
 
     InitConstants::colour();
-    InitConstants::caslon();
 
     bool redraw = true;
     bool done = false;
@@ -34,29 +30,30 @@ int main(int argc, char** argv)
 
     imageCollection->add(background);
 
-    auto* menu = new Panel(120, 120, 400, 300, *gColour->murkyDarkGrey, *gColour->murkyBlack, 3);
+    auto* menu = new Panel(120, 120, 400, 300, *gColour->murkyDarkGrey->clone(0.86), *gColour->murkyBlack->clone(), 3);
 
-    menu->setAlpha(0.86);
-
-    menu->add(new Panel(10, 10, 50, 50, *gColour->murkyBlack));
-    menu->add(new Panel(70, 10, 50, 50, *gColour->murkyBlack));
+    menu->add(new Panel(10, 10, 50, 50, *gColour->murkyBlack->clone()));
+    menu->add(new Panel(70, 10, 50, 50, *gColour->murkyBlack->clone()));
 
     auto* text = new FontStyle(
             (float) 1920-100,
             (float) 100,
-            gCaslon->getFont("regular", 140),
-            gColour->murkyWhite->get(),
+            "LibreCaslonText-Regular.ttf",
+            100,
+            *gColour->murkyWhite,
             ALLEGRO_ALIGN_RIGHT
     );
 
     auto* textTwo = new FontStyle(
-            60, 15,
-            gCaslon->getFont("bold", 16),
-            gColour->murkyWhite->get(),
+            60,
+            15,
+            "LibreCaslonText-Bold.ttf",
+            21,
+            *gColour->murkyWhite,
             ALLEGRO_ALIGN_CENTRE
     );
 
-    auto* textBox = new TextBox(textTwo, 600, 300, 240, 80, *gColour->murkyDarkGrey);
+    auto* textBox = new TextBox(*textTwo, 600, 300, 240, 80, *gColour->murkyDarkGrey);
     textBox->setText("Text Box");
 
     al_register_event_source(queue, al_get_keyboard_event_source());

@@ -7,35 +7,39 @@
 
 #include <allegro5/allegro_font.h>
 #include <string>
+#include "../colour/Colour.h"
 #include "Font.h"
 
 class FontStyle {
 private:
     float x{0};
     float y{0};
-    ALLEGRO_FONT* font;
-    ALLEGRO_COLOR colour;
+    const char* font{};
+    Colour colour;
     int size{16};
     int alignment{ALLEGRO_ALIGN_LEFT};
     int lineHeight{19};
     int maxWidth{0};
 protected:
 
-    void draw(const char* text, float xOffset, float yOffset, ALLEGRO_COLOR colour);
+    void draw(const char* text, float xOffset, float yOffset, Colour colour);
 
 public:
+    FontStyle();
 
-    FontStyle(float x, float y, ALLEGRO_FONT* font, ALLEGRO_COLOR colour);
+    FontStyle(float x, float y, const char* font, int size, Colour colour);
 
-    FontStyle(float x, float y, ALLEGRO_FONT* font, ALLEGRO_COLOR colour, int alignment);
+    FontStyle(float x, float y, const char* font, int size, Colour colour, int alignment);
+
+    ~FontStyle();
 
     void write(const char* text);
 
     void write(const char* text, float xOffset, float yOffset);
 
-    void write(const char* text, ALLEGRO_COLOR colour);
+    void write(const char* text, Colour colour);
 
-    void write(const char* text, float xOffset, float yOffset, ALLEGRO_COLOR colour);
+    void write(const char* text, float xOffset, float yOffset, Colour colour);
 
     float getX() const;
 
@@ -45,13 +49,13 @@ public:
 
     void setY(float y);
 
-    ALLEGRO_FONT* getFont() const;
+    const char* getFont();
 
-    void setFont(ALLEGRO_FONT* font);
+    void setFont(const char* font);
 
-    const ALLEGRO_COLOR& getColour() const;
+    Colour getColour();
 
-    void setColour(const ALLEGRO_COLOR& colour);
+    void setColour(Colour colour);
 
     int getSize() const;
 

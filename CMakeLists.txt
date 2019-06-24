@@ -15,20 +15,17 @@ set(
         settings/Resolution.cpp
         settings/Resolution.h
         main.h
-        user-interface/Panel.cpp
-        user-interface/Panel.h
+        utilities/user-interface/Panel.cpp
+        utilities/user-interface/Panel.h
         utilities/colour/Colour.cpp
         utilities/colour/Colour.h
         utilities/colour/ColourGroup.h
-        user-interface/Rect.cpp
-        user-interface/Rect.h
+        utilities/user-interface/Box.cpp
+        utilities/user-interface/Box.h
         utilities/font/Font.cpp
         utilities/font/Font.h
-        utilities/font/FontFamily.cpp
-        utilities/font/FontFamily.h
-        constants/font.h
         constants/colour.h
-        constants/font.cpp constants/colour.cpp initialisers/InitConstants.cpp initialisers/InitConstants.h utilities/font/FontStyle.cpp utilities/font/FontStyle.h utilities/geometry/Point.cpp utilities/geometry/Point.h user-interface/Button.cpp user-interface/Button.h user-interface/TextBox.cpp user-interface/TextBox.h initialisers/InitAllegro.cpp initialisers/InitAllegro.h exceptions/InitError.cpp exceptions/InitError.h utilities/image/ImageCollection.cpp utilities/image/ImageCollection.h utilities/image/Image.cpp utilities/image/Image.h)
+        constants/colour.cpp initialisers/InitConstants.cpp initialisers/InitConstants.h utilities/font/FontStyle.cpp utilities/font/FontStyle.h utilities/geometry/Point.cpp utilities/geometry/Point.h utilities/user-interface/Button.cpp utilities/user-interface/Button.h utilities/user-interface/TextBox.cpp utilities/user-interface/TextBox.h initialisers/InitAllegro.cpp initialisers/InitAllegro.h exceptions/InitError.cpp exceptions/InitError.h utilities/image/ImageCollection.cpp utilities/image/ImageCollection.h utilities/image/Image.cpp utilities/image/Image.h utilities/primitives/Rect.cpp utilities/primitives/Rect.h)
 
 add_executable(game_ui ${game_SRCS})
 

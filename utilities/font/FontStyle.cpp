@@ -1,29 +1,32 @@
 
 #include "FontStyle.h"
 
-FontStyle::FontStyle(float x, float y, ALLEGRO_FONT* font, ALLEGRO_COLOR colour)
+FontStyle::FontStyle() = default;
+
+FontStyle::FontStyle(float x, float y, const char* font, int size, Colour colour)
 {
     FontStyle::x = x;
     FontStyle::y = y;
     FontStyle::font = font;
+    FontStyle::size = size;
     FontStyle::colour = colour;
 }
 
-FontStyle::FontStyle(float x, float y, ALLEGRO_FONT* font, ALLEGRO_COLOR colour, int alignment)
-        :FontStyle(x, y, font, colour)
+FontStyle::FontStyle(float x, float y, const char* font, int size, Colour colour, int alignment)
+        :FontStyle(x, y, font, size, colour)
 {
     FontStyle::alignment = alignment;
 };
 
-void FontStyle::draw(const char* text, float xOffset, float yOffset, ALLEGRO_COLOR colour)
+void FontStyle::draw(const char* text, float xOffset, float yOffset, Colour colour)
 {
     float xPos = x+xOffset;
     float yPos = y+yOffset;
     if (maxWidth==0) {
-        al_draw_text(font, colour, xPos, yPos, alignment, text);
+        al_draw_text(Font::get(font, size), colour.get(), xPos, yPos, alignment, text);
     }
     else {
-        al_draw_multiline_text(font, colour, xPos, yPos, maxWidth, lineHeight, alignment, text);
+        al_draw_multiline_text(Font::get(font, size), colour.get(), xPos, yPos, maxWidth, lineHeight, alignment, text);
     }
 }
 
@@ -32,7 +35,7 @@ void FontStyle::write(const char* text)
     this->draw(text, 0, 0, colour);
 }
 
-void FontStyle::write(const char* text, ALLEGRO_COLOR colour)
+void FontStyle::write(const char* text, Colour colour)
 {
     this->draw(text, 0, 0, colour);
 }
@@ -42,7 +45,7 @@ void FontStyle::write(const char* text, float xOffset, float yOffset)
     this->draw(text, xOffset, yOffset, colour);
 }
 
-void FontStyle::write(const char* text, float xOffset, float yOffset, ALLEGRO_COLOR colour)
+void FontStyle::write(const char* text, float xOffset, float yOffset, Colour colour)
 {
     this->draw(text, xOffset, yOffset, colour);
 }
@@ -67,22 +70,22 @@ void FontStyle::setY(float y)
     FontStyle::y = y;
 }
 
-ALLEGRO_FONT* FontStyle::getFont() const
+const char* FontStyle::getFont()
 {
     return font;
 }
 
-void FontStyle::setFont(ALLEGRO_FONT* font)
+void FontStyle::setFont(const char* font)
 {
     FontStyle::font = font;
 }
 
-const ALLEGRO_COLOR& FontStyle::getColour() const
+Colour FontStyle::getColour()
 {
     return colour;
 }
 
-void FontStyle::setColour(const ALLEGRO_COLOR& colour)
+void FontStyle::setColour(Colour colour)
 {
     FontStyle::colour = colour;
 }
@@ -125,4 +128,8 @@ int FontStyle::getMaxWidth() const
 void FontStyle::setMaxWidth(int maxWidth)
 {
     FontStyle::maxWidth = maxWidth;
+}
+
+FontStyle::~FontStyle()
+{
 }

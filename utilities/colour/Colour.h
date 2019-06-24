@@ -8,6 +8,7 @@
 
 class Colour {
 private:
+    bool initialised{false};
     float r{1};
     float g{1};
     float b{1};
@@ -19,15 +20,17 @@ public:
     Colour(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
     Colour(float r, float g, float b, float a);
 
+    bool isInitialised() const;
+
     explicit Colour(int hex);
 
     Colour(int hex, float a);
 
     ALLEGRO_COLOR get();
 
-    ALLEGRO_COLOR get(float a);
-
     Colour* clone();
+
+    Colour* clone(float a);
 };
 
 #endif //GAME_UI_COLOUR_H

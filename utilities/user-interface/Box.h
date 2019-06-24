@@ -1,14 +1,14 @@
 
 
-#ifndef GAME_UI_RECT_H
-#define GAME_UI_RECT_H
+#ifndef GAME_UI_BOX_H
+#define GAME_UI_BOX_H
 
 #include <iostream>
 #include <vector>
 #include <allegro5/allegro_primitives.h>
-#include "../utilities/colour/Colour.h"
+#include "../colour/Colour.h"
 
-class Rect {
+class Box {
 private:
     float x{};
     float y{};
@@ -17,11 +17,11 @@ private:
     float width{};
     float height{};
 public:
-    Rect(float x, float y, float width, float height);
+    Box(float x, float y, float width, float height);
 
-    Rect* getCoordinates();
+    Box* getCoordinates();
 
-    Rect* getCoordinates(float xOffset, float yOffset);
+    Box* getCoordinates(float xOffset, float yOffset);
 
     float getX() const;
 
@@ -44,4 +44,4 @@ public:
     float getY2() const;
 };
 
-#endif //GAME_UI_RECT_H
+#endif //GAME_UI_BOX_H
