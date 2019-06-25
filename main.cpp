@@ -24,23 +24,24 @@ int main(int argc, char** argv)
     bool redraw = true;
     bool done = false;
 
-    auto* background = new Image("menu-background.jpg");
+    auto* background = new Image("background-one.jpg");
 
     auto imageCollection = new ImageCollection();
 
     imageCollection->add(background);
 
-    auto* menu = new Panel(120, 120, 400, 300, *gColour->murkyDarkGrey->clone(0.86), *gColour->murkyBlack, 3);
+    Colour* panelFill = gColour->midBlue->clone(0.86);
+    auto* menu = new Panel(120, 120, 400, 300, *panelFill, *gColour->dustyBlack, 3);
 
-    menu->add(new Panel(10, 10, 50, 50, *gColour->murkyBlack));
-    menu->add(new Panel(70, 10, 50, 50, *gColour->murkyBlack));
+    menu->add(new Panel(10, 10, 50, 50, *gColour->dustyBlack));
+    menu->add(new Panel(70, 10, 50, 50, *gColour->dustyBlack));
 
     auto* text = new FontStyle(
             (float) 1920-100,
-            (float) 100,
+            (float) 80,
             "LibreCaslonText-Regular.ttf",
             100,
-            *gColour->murkyWhite,
+            *gColour->white,
             ALLEGRO_ALIGN_RIGHT
     );
 
@@ -49,11 +50,11 @@ int main(int argc, char** argv)
             15,
             "LibreCaslonText-Bold.ttf",
             21,
-            *gColour->murkyWhite,
+            *gColour->white,
             ALLEGRO_ALIGN_CENTRE
     );
 
-    auto* textBox = new TextBox(*textTwo, 600, 300, 240, 80, *gColour->murkyDarkGrey);
+    auto* textBox = new TextBox(*textTwo, 600, 300, 240, 80, *gColour->midBlue);
     textBox->setText("Text Box");
 
     al_register_event_source(queue, al_get_keyboard_event_source());
@@ -86,7 +87,7 @@ int main(int argc, char** argv)
         if (redraw && al_is_event_queue_empty(queue)) {
             al_clear_to_color(al_map_rgb(0, 0, 0));
             background->draw(0, 0);
-            text->write((char*) "DEAD WORLD");
+            text->write("DRONE SQUADRON");
             menu->draw();
             textBox->draw();
             al_flip_display();
@@ -101,6 +102,8 @@ int main(int argc, char** argv)
     delete textTwo;
     delete textBox;
     delete resolution;
+    delete panelFill;
+    delete gColour;
     al_destroy_event_queue(queue);
     al_destroy_display(display);
     al_destroy_timer(timer);

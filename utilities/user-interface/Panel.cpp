@@ -83,3 +83,10 @@ void Panel::setStrokeWidth(float strokeWidth)
 {
     Panel::strokeWidth = strokeWidth;
 }
+
+Panel::~Panel()
+{
+    for (auto& i : children) {
+        delete i;
+    }
+}

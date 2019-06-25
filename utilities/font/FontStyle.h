@@ -14,7 +14,7 @@ class FontStyle {
 private:
     float x{0};
     float y{0};
-    const char* font{};
+    const char* font = nullptr;
     Colour colour;
     int size{16};
     int alignment{ALLEGRO_ALIGN_LEFT};
@@ -25,13 +25,12 @@ protected:
     void draw(const char* text, float xOffset, float yOffset, Colour colour);
 
 public:
-    FontStyle();
 
     FontStyle(float x, float y, const char* font, int size, Colour colour);
 
     FontStyle(float x, float y, const char* font, int size, Colour colour, int alignment);
 
-    ~FontStyle();
+    FontStyle();
 
     void write(const char* text);
 

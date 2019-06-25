@@ -24,6 +24,8 @@ public:
 
     Panel(float x, float y, float width, float height, Colour fill, Colour stroke, float strokeWidth);
 
+    ~Panel();
+
     virtual void draw();
 
     virtual void draw(float xOffset, float yOffset);

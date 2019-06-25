@@ -22,8 +22,9 @@ void FontStyle::draw(const char* text, float xOffset, float yOffset, Colour colo
 {
     float xPos = x+xOffset;
     float yPos = y+yOffset;
+    ALLEGRO_FONT* allegroFont = Font::get(font, size);
     if (maxWidth==0) {
-        al_draw_text(Font::get(font, size), colour.get(), xPos, yPos, alignment, text);
+        al_draw_text(allegroFont, colour.get(), xPos, yPos, alignment, text);
     }
     else {
         al_draw_multiline_text(Font::get(font, size), colour.get(), xPos, yPos, maxWidth, lineHeight, alignment, text);
@@ -128,8 +129,4 @@ int FontStyle::getMaxWidth() const
 void FontStyle::setMaxWidth(int maxWidth)
 {
     FontStyle::maxWidth = maxWidth;
-}
-
-FontStyle::~FontStyle()
-{
 }

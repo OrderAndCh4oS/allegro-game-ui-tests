@@ -6,14 +6,11 @@
 
 class ColourGroup {
 public:
-    Colour* murkyBlack = new Colour(0x260101);
-    Colour* murkyDarkGrey = new Colour(0x402516);
-    Colour* murkyGrey = new Colour(0x736C48);
-    Colour* murkyLightGrey = new Colour(0xA1A67B);
-    Colour* murkyWhite = new Colour(0xD9CD91);
-    Colour* red = new Colour(1.0f, 0.0f, 0.0f);
-    Colour* green = new Colour(0.0f, 1.0f, 0.0f);
-    Colour* blue = new Colour(0.0f, 0.0f, 1.0f);
+    Colour* dustyBlack = new Colour(0x111C26);
+    Colour* midBlue = new Colour(0x253659);
+    Colour* murkyGrey = new Colour(0x8C6961);
+    Colour* lightBlue = new Colour(0x495B73);
+    Colour* white = new Colour(0xF2F2DA);
 };
 
 #endif
