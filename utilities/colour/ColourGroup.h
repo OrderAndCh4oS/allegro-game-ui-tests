@@ -6,6 +6,7 @@
 
 class ColourGroup {
 public:
+    ~ColourGroup();
     Colour* dustyBlack = new Colour(0x111C26);
     Colour* midBlue = new Colour(0x253659);
     Colour* murkyGrey = new Colour(0x8C6961);
